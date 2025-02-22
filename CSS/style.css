@@ -12,10 +12,11 @@ body {
 
 /* Навигация */
 nav {
+  left: 0px;
   display: flex;
   justify-content: center;
   background: #4a2f49;
-  padding: 15px;
+
   position: fixed;
   top: 0;
   width: 100%;
@@ -77,6 +78,7 @@ nav a.active {
 .intro-text {
   max-width: 500px;
   animation: slideInLeft 1s ease-in-out;
+  text-align: left;
 }
 
 .intro-text h2 {
@@ -101,6 +103,7 @@ nav a.active {
   font-weight: bold;
   text-decoration: none;
   border-radius: 8px;
+  margin-top: 30px;
   transition: background 0.3s, transform 0.3s, box-shadow 0.3s;
   box-shadow: 0 4px 10px rgba(255, 204, 0, 0.5);
 }
@@ -114,7 +117,7 @@ nav a.active {
 /* Картинка */
 .intro-image img {
   width: 100%;
-  max-width: 450px; /* Оставил как было для ПК */
+  max-width: 450px;
   border-radius: 10px;
   box-shadow: 0 5px 20px rgba(0, 0, 0, 0.5);
   animation: slideInRight 1s ease-in-out;
@@ -180,51 +183,6 @@ nav a.active {
   height: 100%;
   background: rgba(0, 0, 0, 0.6);
   z-index: 2000;
-}
-
-.modal-content {
-  background: #3a2b3f;
-  padding: 20px;
-  width: 90%;
-  max-width: 500px;
-  margin: 10% auto;
-  text-align: center;
-  border-radius: 8px;
-  position: relative;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
-  animation: modalFadeIn 0.5s ease-in-out;
-}
-
-.modal-content img {
-  width: 100%;
-  max-width: 250px;
-  border-radius: 8px;
-  margin-bottom: 10px;
-}
-
-.modal-content .close {
-  position: absolute;
-  top: 10px;
-  right: 15px;
-  font-size: 24px;
-  cursor: pointer;
-  color: #ffcc00;
-}
-
-.modal-content .close:hover {
-  color: #e0c9a6;
-}
-
-/* Стили для модального окна */
-.modal {
-  display: none;
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(0, 0, 0, 0.6);
-  z-index: 2000;
   align-items: center;
   justify-content: center;
 }
@@ -234,17 +192,28 @@ nav a.active {
   padding: 20px;
   width: 90%;
   max-width: 500px;
-  text-align: center;
+  margin: 10% auto;
+  text-align: left;
   border-radius: 8px;
-  position: relative;
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
-  animation: modalFadeIn 0.5s ease-in-out;
+}
+
+
+
+
+.modal-content ul {
+  list-style: none;
+  padding: 0;
+}
+
+.modal-content li {
+  margin-bottom: 5px;
 }
 
 .modal-content img {
   width: 100%;
-  max-width: 100%;
   border-radius: 8px;
+  margin-bottom: 10px;
 }
 
 .close {
@@ -260,7 +229,7 @@ nav a.active {
   color: #e0c9a6;
 }
 
-/* Кнопки переключения */
+/* Кнопки переключения галереи */
 .gallery-controls {
   display: flex;
   justify-content: space-between;
@@ -280,7 +249,6 @@ nav a.active {
   background: #e0b900;
 }
 
-
 /* Футер */
 footer {
   text-align: center;
@@ -293,15 +261,12 @@ footer {
   box-shadow: 0 -5px 15px rgba(0, 0, 0, 0.3);
 }
 
-/* Анимация футера */
 footer:hover {
   background: #28122d;
   transition: background 0.5s ease-in-out;
 }
 
-/* ============================= */
-/* АДАПТАЦИЯ ДЛЯ МОБИЛЬНЫХ */
-/* ============================= */
+/* Адаптация для мобильных */
 @media (max-width: 768px) {
   .intro {
     flex-direction: column;
