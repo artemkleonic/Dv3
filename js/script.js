@@ -16,7 +16,7 @@ document.addEventListener("DOMContentLoaded", () => {
           desc: `
             <ul>
               <li>- вишня</li>
-              <li>-журавлина</li>
+              <li>- журавлина</li>
               <li>- чорноплідна горобина</li>
               <li>- перець з медом</li>
               <li>- трав’яна</li>
