@@ -20,7 +20,7 @@ document.addEventListener("DOMContentLoaded", () => {
               <li>- чорноплідна горобина</li>
               <li>- перець з медом</li>
               <li>- трав’яна</li>
-              <li>- зубрівка</li>
+              <li>- чаполоч</li>
             </ul>
             <p><strong>Вартість: 510 грн.</strong></p>
             <p>(Ручне вироблення набору, обробка замовлення та пакування - 510 грн. Подарунковий набір - 0 грн)</p>
@@ -28,11 +28,11 @@ document.addEventListener("DOMContentLoaded", () => {
         },
         whiskey: {
           title: "Фруктовий фітокомплекс",
-          img: "./Images/2.jpg",
+          img: "./Images/openmodal2.jpg",
           desc: `
             <ul>
-              <li>- абрикос</li>
-              <li>- слива</li>
+              <li>- абрикотин</li>
+              <li>- слив'янка</li>
               <li>- чорна смородина</li>
               <li>- малина</li>
               <li>- диня</li>
@@ -44,15 +44,15 @@ document.addEventListener("DOMContentLoaded", () => {
         },
         champagne: {
           title: "Насіння, коріння та злаки",
-          img: "./Images/1.jpg",
+          img: "./Images/openmodal3.jpg",
           desc: `
             <ul>
-              <li>- димний ячмінь</li>
+              <li>- копчений ячмінь</li>
               <li>- витримана кукурудза</li>
               <li>- цукрова тростина</li>
               <li>- ароматна тростина</li>
-              <li>- можевельник та спеції</li>
-              <li>- полинь, аніс, фенхель, м’ята</li>
+              <li>- ялівець, полин та спеції</li>
+              <li>- полинь, бедренець, фенхель, м’ята</li>
             </ul>
             <p><strong>Вартість: 600 грн.</strong></p>
             <p>(Ручне вироблення набору, обробка замовлення та пакування - 600 грн. Подарунковий набір - 0 грн)</p>
@@ -60,18 +60,17 @@ document.addEventListener("DOMContentLoaded", () => {
         },
         kognag: {
           title: "Корисні рослини",
-          img: "./Images/market4.jpg",
+          img: "./Images/openmodal4.jpg",
           desc: `
             <ul>
               <li>- пшениця</li>
               <li>- кокосовий горіх</li>
               <li>- банан</li>
               <li>- ароматна тростина</li>
-              <li- ароматна тростина</li>
-              <li>- полинь, аніс, фенхель, м’ята</li>
+              <li>- полинь, бедренець, фенхель, м’ята</li>
             </ul>
             <p><strong>Вартість: 600 грн.</strong></p>
-            <p>(Ручне вироблення набору, обробка замовлення та пакування - 600 грн. Подарунковий набір - 0 грн)</p>
+            <p>(Ручне вироблення набору, обробка замовлення та пакування - 600 грн. Подарунковий набір - 0)</p>
           `,
         },
       };
@@ -187,5 +186,94 @@ document.addEventListener("DOMContentLoaded", () => {
           }
           event.preventDefault();
       });
+  });
+});
+document.addEventListener("DOMContentLoaded", () => {
+  const galleryModal = document.getElementById("galleryModal");
+  const galleryImage = document.getElementById("galleryImage");
+  const closeGalleryModal = document.querySelector("#galleryModal .close");
+  const prevBtn = document.getElementById("prevImage");
+  const nextBtn = document.getElementById("nextImage");
+
+  if (!galleryModal || !galleryImage) {
+      console.error("Ошибка: Не найден элемент модалки!");
+      return;
+  }
+
+  // Создаём блок для текста под картинкой, если его нет
+  let galleryTextContainer = document.getElementById("galleryText");
+  if (!galleryTextContainer) {
+      galleryTextContainer = document.createElement("div");
+      galleryTextContainer.id = "galleryText";
+      galleryTextContainer.style.textAlign = "center";
+      galleryTextContainer.style.marginTop = "10px";
+      galleryTextContainer.style.fontSize = "18px";
+      galleryTextContainer.style.fontWeight = "bold";
+      galleryModal.querySelector(".modal-content").appendChild(galleryTextContainer);
+  }
+
+  // Массив с изображениями и текстом
+  const galleryItems = [
+      { src: "./Images/batkavslape.jpg", text: "Батька відпочиває" },
+      { src: "./Images/Batya.png", text: "Справжній авторитет" },
+      { src: "./Images/batyazloy.jpg", text: "Батька сердитий" },
+      { src: "./Images/batyavkostume.jpg", text: "Елегантний стиль" }
+  ];
+
+  let currentIndex = 0;
+
+  function updateGallery() {
+      galleryImage.src = galleryItems[currentIndex].src;
+      galleryTextContainer.textContent = galleryItems[currentIndex].text;
+  }
+
+  function openGalleryModal() {
+      console.log("Клик сработал! Открываем модалку.");
+      currentIndex = 0;
+      updateGallery();
+      galleryModal.style.display = "flex";
+  }
+
+  // Открытие модалки по клику на картинку, текст и цитату
+  const introImage = document.querySelector(".intro-image img");
+  const introText = document.querySelector(".intro-text");
+  const introQuote = document.querySelector(".intro-image p");
+
+  if (introImage) {
+      introImage.addEventListener("click", openGalleryModal);
+  } else {
+      console.error("Ошибка: Элемент .intro-image img не найден!");
+  }
+
+  if (introText) {
+      introText.addEventListener("click", openGalleryModal);
+  } else {
+      console.error("Ошибка: Элемент .intro-text не найден!");
+  }
+
+  if (introQuote) {
+      introQuote.addEventListener("click", openGalleryModal);
+  } else {
+      console.error("Ошибка: Элемент .intro-image p не найден!");
+  }
+
+  closeGalleryModal?.addEventListener("click", () => {
+      galleryModal.style.display = "none";
+  });
+
+  prevBtn?.addEventListener("click", () => {
+      currentIndex = (currentIndex - 1 + galleryItems.length) % galleryItems.length;
+      updateGallery();
+  });
+
+  nextBtn?.addEventListener("click", () => {
+      currentIndex = (currentIndex + 1) % galleryItems.length;
+      updateGallery();
+  });
+
+  window.addEventListener("click", (event) => {
+      if (event.target === galleryModal) {
+          galleryModal.style.display = "none";
+      }
   });
 });
