@@ -66,6 +66,7 @@ document.addEventListener("DOMContentLoaded", () => {
               <li>- пшениця</li>
               <li>- кокосовий горіх</li>
               <li>- банан</li>
+              <li>- ароматна тростина</li>
               <li>- копчений ячмінь </li>
               <li>- полин, бедренець, фенхель, м’ята</li>
             </ul>
